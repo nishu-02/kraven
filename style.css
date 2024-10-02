@@ -1,0 +1,212 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffed9e;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+    align-items: center;
+}
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+.auth a {
+    margin-left: 10px;
+    color: #333;
+    text-decoration: none;
+}
+.section1 {
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #666;
+}
+.main-content {
+    text-align: center;
+}
+.image-container {
+    width: 90%;
+    height: 300px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 50px;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.circles {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.circle {
+    width: 200px;
+    height: 100px;
+    background-color: #2ecc71;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    animation: popUp 0.5s ease-out forwards;
+}
+.circle:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.circle:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes popUp {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px; /* Increased padding for better spacing */
+}
+
+.navbar-left h1 {
+    margin: 0;
+    font-size: 36px; /* Slightly larger font size */
+    font-family: 'Courier New', Courier, monospace;
+    color: #4CAF50; /* Green color for brand identity */
+}
+
+.navbar-center ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar-center ul li {
+    display: inline;
+    margin: 0 20px; /* Increased margin for better spacing */
+}
+
+.navbar-center ul li a {
+    color: #555; /* Dark gray for links */
+    text-decoration: none;
+    font-weight: 500; /* Medium weight for emphasis */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition effect */
+}
+
+.navbar-center ul li a:hover {
+    color: #4CAF50; /* Change color on hover */
+    transform: scale(1.1); /* Scale effect on hover */
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe9a2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+.chat-screen {
+    display: none; /* Initially hidden */
+    position: fixed; /* Changed to fixed for centering */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust to center */
+    width: 600px; /* Fixed width */
+    height: 500px; /* Fixed height */
+    background-color: white;
+    z-index: 1000;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.chat-messages {
+    height: calc(100% - 100px); /* Adjusted for header and input area */
+    overflow-y: auto; /* Enable scrolling */
+    border: 2px solid #ccc; /* Adjusted border */
+    padding: 10px; /* Added padding for message area */
+    margin-bottom: 10px; /* Space below */
+}
+
+.chat-input-container {
+    display: flex; /* Changed to flex for better alignment */
+    padding: 10px; /* General padding */
+    border-top: 1px solid #ccc; /* Visual separation */
+    justify-content: space-between; /* Space items evenly */
+    width: 100%; /* Full width */
+}
+
+.input-group {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between elements */
+    width: 100%; /* Full width for input group */
+}
+
+.input-text {
+    flex-grow: 1; /* Allow text input to grow and take available space */
+}
+
+input[type="text"] {
+    padding: 10px; /* Inner padding */
+    border: 2px solid #ccc; /* Border style */
+    border-radius: 20px; /* Rounded edges */
+    width: 100%; /* Full width for input */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.upload-doc {
+    cursor: pointer; /* Change cursor to pointer for upload label */
+}
+
+.upload-doc .file-label {
+    background-color: #007BFF; /* Button color */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.send-button button {
+    padding: 10px 15px;
+    background-color: #28a745; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-button button:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+
+.mic-button img {
+    width: 25px; /* Slightly larger mic icon */
+    height: 25px; /* Slightly larger mic icon */
+}

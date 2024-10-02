@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRAVEN - Website Front Page</title>        
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="navbar-left">
+                    <h1>Kraven</h1>
+                </div>
+                <div class="navbar-center">
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#our-work">Our Work</a></li>
+                        <li><a href="#our-team">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <a href="#login" class="login-button">Login / Sign In</a>
+                </div>
+            </nav>
+        </header>
+        
+        <div class="section1">Process itni easy ki aapka scooter bhi samajh jaaye! 😎</div>
+        <div class="main-content">
+            <div class="image-container">
+                <img src="kraVen (1).png" alt="Kraven"> 
+            </div>
+            <div class="circles">
+                <div class="circle">FASTEST FORM FILLING</div>
+                <div class="circle">100% TRANSPARENCY</div>
+                <div class="circle">40K+ TRUSTED USERS</div>
+            </div>
+        </div>
+        <div class="chat-input" onclick="openChat()" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: transform 0.2s;">
+          <span style="flex-grow: 1;"> Type something...</span>
+          <label for="file-input" style="margin-left: 10px; cursor: pointer;">
+              <img src="pngtree-vector-microphone-icon-png-image_695343-Photoroom.png" alt="mic" style="width: 30px; height: 30px;">
+          </label>
+          <input type="file" id="file-input" accept=".pdf,.doc,.docx,.txt" style="display: none;">
+      </div>
+    </div>
+
+    <div class="chat-screen" id="chatScreen">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-container">
+            <div class="input-group">
+                <div class="input-text">
+                    <input type="text" id="userInput" placeholder="Type your message...">
+                </div>
+                <div class="upload-doc">
+                    <label for="file-input" class="file-label">Upload Document</label>
+                    <input type="file" id="file-input" accept=".pdf,.doc,.docx,.txt" style="display: none;">
+                </div>
+                <div class="send-button">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+                <div class="mic-button" onclick="startVoiceRecognition()">
+                    <img src="pngtree-vector-microphone-icon-png-image_695343-Photoroom.png" alt="Mic" style="width: 30px; height: 30px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+<script>
+   function openChat() {
+    document.getElementById('chatScreen').style.display = 'block';
+}
+
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim(); // Get the trimmed message
+
+    if (message) {
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Append user message
+        const userMessageElement = document.createElement('div');
+        userMessageElement.textContent = "You: " + message;
+        userMessageElement.className = 'user-message';
+        chatMessages.appendChild(userMessageElement);
+
+        // Clear input
+        input.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+
+        // Simulate bot response after a delay
+        setTimeout(() => {
+            let botResponse = getBotResponse(message);
+
+            // Append bot response
+            const botMessageElement = document.createElement('div');
+            botMessageElement.textContent = "Bot: " + botResponse;
+            botMessageElement.className = 'agent-message';
+            chatMessages.appendChild(botMessageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+        }, 1000); // 1 second delay for bot response
+    }
+}
+
+function getBotResponse(message) {
+    // Convert message to lowercase for easy matching
+    message = message.toLowerCase();
+
+    // Determine bot response based on user input
+    if (message.includes('namaste') || message.includes('hi')) {
+        return "Hello! Aap kaise hain? Kya main aapki madad kar sakta hoon? Kya aapko bike insurance ke baare mein koi sawaal hai?";
+    } else if (message.includes('insurance') || message.includes('mujhe bike ka insurance karwana hai')) {
+        return "Haan bhaiyya, bilkul bata sakta hun. Aapko kis tarah ka insurance chahiye? Kya aapko accident, theft, aur fire ka coverage chahiye?";
+    } else if (message.includes('affordable plan') || message.includes('ek affordable plan chahiye')) {
+        return "Achcha, main aapko ek bahut hi affordable plan bataunga. Aapko isme bahut hi kam premium pay karna hoga. Kya aap isme coverage chahte hain?";
+    } else if (message.includes('coverage') || message.includes('accident') || message.includes('theft') || message.includes('fire')) {
+        return "Haan bhaiyya, is plan mein aapko accident, theft, aur fire ka coverage milega. Aur iske saath, aapko roadside assistance bhi milegi. Agar aapki bike kisi wajah se kharab ho jaati hai toh hum aapko help karenge. Kya aap is plan ko lete ho?";
+    } else if (message.includes('haan') || message.includes('le leta hun')) {
+        return "Achcha, aap apne bike ka registration certificate aur driving license le aaiye. Main aapko form fill karwa dunga.";
+    } else if (message.includes('thank you') || message.includes('shukriya')) {
+        return "Thank you bhaiyya, aapne sahi faisla kiya hai! Agar aapke paas aur sawaal hain, toh poochne mein hichkichaiye mat.";
+    } else {
+        return "Main yahan bike insurance ki madad ke liye hoon. Aap mujhe koi bhi sawaal pooch sakte hain! Agar aapko kisi specific topic par jaankari chahiye, toh please bataayein.";
+    }
+}
+
+
+document.getElementById('file-input-chat').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.innerHTML += `<div><strong>System:</strong> File uploaded: ${file.name}</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+    }
+});
+
+function startVoiceRecognition() {
+    alert('Voice recognition started (simulated).');
+    // Implement voice recognition feature here
+}
+
+</script>
+
+
+</body>
+</html>
